@@ -14,8 +14,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // 並列、サブスレッド
-        let queue = DispatchQueue.global(qos: .default)
+        // 直列、メインスレッド
+        let queue = DispatchQueue.main
         for i in 0..<10 {
             queue.async {
                 print("start: \(i)")
@@ -23,6 +23,16 @@ class ViewController: UIViewController {
                 print("end: \(i)")
             }
         }
+        
+//        // 並列、サブスレッド
+//        let queue = DispatchQueue.global(qos: .default)
+//        for i in 0..<10 {
+//            queue.async {
+//                print("start: \(i)")
+//                sleep(1)
+//                print("end: \(i)")
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {
